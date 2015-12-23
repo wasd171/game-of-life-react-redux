@@ -1,0 +1,52 @@
+{
+  "name": "game-of-life-react-kefir",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack-dev": "webpack --progress --colors --watch",
+    "webpack-prod": "NODE_ENV=production webpack --progress --colors --config webpack.production.config.js",
+    "heroku-deploy": "npm run webpack-prod && git push heroku master",
+    "start": "PORT=80 node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "body-parser": "^1.14.1",
+    "classnames": "^2.2.0",
+    "compression": "^1.6.0",
+    "engine.io": "^1.5.4",
+    "express": "^4.13.3",
+    "feathers": "^1.2.0",
+    "immutable": "^3.7.6",
+    "keymirror": "^0.1.1",
+    "material-ui": "^0.13.4",
+    "normalize.css": "^3.0.3",
+    "primus": "^4.0.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-icons": "^0.2.0",
+    "react-redux": "^4.0.2",
+    "react-tap-event-plugin": "^0.2.1",
+    "reduce-reducers": "^0.1.1",
+    "redux": "^3.0.5",
+    "redux-immutablejs": "0.0.8",
+    "redux-thunk": "^1.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.1.0",
+    "babel-loader": "^6.2.0",
+    "browser-sync": "^2.10.0",
+    "browser-sync-webpack-plugin": "^1.0.1",
+    "css-loader": "^0.23.0",
+    "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^3.0.0",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.4.2",
+    "webpack": "^1.12.6"
+  }
+}

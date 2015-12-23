@@ -1,0 +1,24 @@
+:local
+	basic-cell(color)
+		position: relative
+		width: 5%
+		cursor pointer
+		user-select: none
+		&:before
+			content: ""
+			cursor pointer
+			user-select: none
+			display: block
+			padding-top: 100%
+			background-color color
+			border-top 1px solid lightgray
+			border-left 1px solid lightgray
+
+	.cell
+		basic-cell(white)
+
+	.cell-alive
+		basic-cell(#64dd17)
+
+	.cell-dead
+		basic-cell(white)
