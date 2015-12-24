@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ClosureCompilerPlugin = require('webpack-closure-compiler');
 
 module.exports = {
 	entry: './src/client.jsx',
@@ -18,7 +19,8 @@ module.exports = {
 				exclude: /(node_modules|bower_components)/,
 				loader: 'babel',
 				query: {
-					presets: ['react', 'es2015']
+					presets: ['react', 'es2015'],
+					plugins: ["transform-decorators"]
 				}
 			}
 		]
@@ -29,6 +31,12 @@ module.exports = {
 			compress: {
 				warnings: false
 			}
+		}),
+
+		new ClosureCompilerPlugin({
+			language_in: 'ECMASCRIPT6',
+			language_out: 'ECMASCRIPT5',
+			compilation_level: 'SIMPLE'
 		})
 	]
 };

@@ -34,7 +34,7 @@ export function interval(state = initialInterval, action) {
 const initialSizes = Immutable.fromJS([
 	{size: 15, text: '15x15'},
 	{size: 30, text: '30x30'},
-	{size: 60, text: '60x60'}
+	{size: 50, text: '50x50'}
 ]);
 
 export function sizes(state = initialSizes, action) {

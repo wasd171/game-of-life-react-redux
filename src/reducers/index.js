@@ -9,12 +9,13 @@ export default reduceReducers(
 	(state, action) => {
 		switch (action.type) {
 			case types.CELLS_RECALCULATE:
+				//const timeStart = Date.now();
+
 				const cells = state.get('cells');
 				const gameRunning = state.get('gameRunning');
 				const size = state.get('size');
 
 				if (gameRunning) {
-					let newCells = cells;
 
 					function isNeighbour(currentCell, cell) {
 						const x = currentCell.get('x');
@@ -46,14 +47,14 @@ export default reduceReducers(
 							}
 						);
 
-					cellsMightChange.forEach(
+					const updatedCells = cellsMightChange.map(
 						(currentCell) => {
-							const nearSize = cells
-								.filter( (cell) => isNeighbour(currentCell, cell) )
+							const nearSize = cellsMightChange
 								.filter( (cell) => cell.get('alive') )
+								.filter( (cell) => isNeighbour(currentCell, cell) )
 								.size;
 
-							const newCell = currentCell.set(
+							return currentCell.set(
 								'alive',
 								currentCell.get('alive')
 									?
@@ -62,11 +63,15 @@ export default reduceReducers(
 									(nearSize === 3)
 							);
 
-							newCells = newCells.set( currentCell.get('index'), newCell );
 						}
 					);
 
-					return state.set('cells', newCells);
+					return state.set('cells', cells.merge(updatedCells) );
+
+					//const timeEnd = Date.now();
+					//console.log('It took ', (timeEnd - timeStart), 'ms');
+
+					//return newState;
 				}
 				else {
 					return state;

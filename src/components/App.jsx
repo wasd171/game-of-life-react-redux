@@ -2,21 +2,21 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as gameActions from '../actions/game'
-
+import {pick, omit} from 'lodash'
 
 import classnames from 'classnames/bind'
 import styles from '../styles/App.styl'
 const cx = classnames.bind(styles);
 
 import {AppBar, Card, CardText, CardActions, FlatButton} from 'material-ui'
-
 import Field from './Field.jsx'
 import Controls from './Controls.jsx'
 
 
+
 class App extends React.Component {
+
 	render () {
-		const {cells} = this.props;
 		return (
 			<div>
 				<AppBar title="Game of Life" showMenuIconButton={false} style={{ marginBottom: '1em' }}/>
@@ -24,8 +24,8 @@ class App extends React.Component {
 				<div className={cx('game-container')}>
 
 					<Card>
-						<Field {...this.props}/>
-						<Controls {...this.props}/>
+						<Field { ...pick(this.props, ['actions', 'cells', 'size']) } />
+						<Controls {...omit(this.props, 'cells')} />
 					</Card>
 
 				</div>
