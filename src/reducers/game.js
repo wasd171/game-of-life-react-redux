@@ -1,5 +1,5 @@
 import types from '../constants/GameConstants'
-import Immutable, {List, Map} from 'immutable'
+import {OrderedMap, Map} from 'immutable'
 
 
 
@@ -34,7 +34,7 @@ export function interval(state = initialInterval, action) {
 const initialSizes = Immutable.fromJS([
 	{size: 15, text: '15x15'},
 	{size: 30, text: '30x30'},
-	{size: 50, text: '50x50'}
+	{size: 60, text: '60x60'}
 ]);
 
 export function sizes(state = initialSizes, action) {
@@ -60,7 +60,7 @@ export function size(state = initialSize, action) {
 
 
 function generateCells(size) {
-	let cells = Immutable.OrderedMap();
+	let cells = OrderedMap();
 
 	for (let x = 0; x < size; x++) {
 		for (let y = 0; y < size; y++) {
@@ -71,7 +71,7 @@ function generateCells(size) {
 					alive: false
 				}
 			);
-			cells = cells.set(Map({x, y}), Map(cell) );
+			cells = cells.set( Map({x, y}), Map(cell) );
 		}
 	}
 

@@ -12,15 +12,8 @@ import Cell from './Cell.jsx'
 
 class Field extends React.Component {
 
-	shouldComponentUpdate (nextProps) {
-		return true;
-		//return !shallowEqualImmutable(this.props, nextProps);
-	}
-
 	render () {
 		const {actions, cells, size} = this.props;
-
-		//const reactCells = [];
 
 		const reactCells = cells.map( (cell) => {
 			return (

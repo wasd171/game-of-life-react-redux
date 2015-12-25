@@ -17,11 +17,6 @@ import Controls from './Controls.jsx'
 
 class App extends React.Component {
 
-	shouldComponentUpdate (nextProps) {
-		return true;
-		//return !shallowEqualImmutable(this.props, nextProps);
-	}
-
 	render () {
 		return (
 			<div>
