@@ -9,12 +9,16 @@ import {MdPauseCircleOutline, MdPlayCircleOutline, MdReplay} from 'react-icons/l
 
 
 class Controls extends React.Component {
+	shouldComponentUpdate (nextProps) {
+		return true;
+		//return !shallowEqualImmutable(this.props, nextProps);
+	}
 
 	render () {
 
 		const {actions, gameRunning, size, sizes, intervals, interval} = this.props;
-		const intervalsJS = intervals.toJS();
-		const sizesJS = sizes.toJS();
+		const intervalsJS = intervals;
+		const sizesJS = sizes;
 
 		return (
 			<CardActions>

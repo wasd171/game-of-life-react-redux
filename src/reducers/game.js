@@ -68,11 +68,10 @@ function generateCells(size) {
 				{
 					x:     x,
 					y:     y,
-					alive: false,
-					index: cells.size
+					alive: false
 				}
 			);
-			cells = cells.set(cell.index, Map(cell) );
+			cells = cells.set(Map({x, y}), Map(cell) );
 		}
 	}
 
@@ -84,9 +83,10 @@ const initialCells = generateCells( initialSize );
 export function cells(state = initialCells, action) {
 	switch (action.type) {
 		case types.CELL_TOGGLE:
-			const index = action.cell.get('index');
-			const cell = state.get( index );
-			return state.setIn( [ index, 'alive' ], !cell.get('alive') );
+			const x = action.cell.get('x');
+			const y = action.cell.get('y');
+			const cell = state.get( Map({x, y}) );
+			return state.setIn( [ Map({x, y}), 'alive' ], !cell.get('alive') );
 
 		case types.GAME_SET_SIZE:
 			return generateCells(action.size);

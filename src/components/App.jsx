@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as gameActions from '../actions/game'
 import {pick, omit} from 'lodash'
+import { shallowEqualImmutable } from 'react-immutable-render-mixin'
 
 import classnames from 'classnames/bind'
 import styles from '../styles/App.styl'
@@ -15,6 +16,11 @@ import Controls from './Controls.jsx'
 
 
 class App extends React.Component {
+
+	shouldComponentUpdate (nextProps) {
+		return true;
+		//return !shallowEqualImmutable(this.props, nextProps);
+	}
 
 	render () {
 		return (
@@ -36,11 +42,11 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		intervals: state.get('intervals'),
+		intervals: state.get('intervals').toJS(),
 		interval: state.get('interval'),
-		cells: state.get('cells'),
+		cells: state.get('cells').toArray(),
 		size: state.get('size'),
-		sizes: state.get('sizes'),
+		sizes: state.get('sizes').toJS(),
 		gameRunning: state.get('gameRunning'),
 		timer: state.get('timer')
 	}

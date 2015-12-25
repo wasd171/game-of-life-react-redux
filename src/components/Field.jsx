@@ -13,22 +13,23 @@ import Cell from './Cell.jsx'
 class Field extends React.Component {
 
 	shouldComponentUpdate (nextProps) {
-		return !shallowEqualImmutable(this.props, nextProps);
+		return true;
+		//return !shallowEqualImmutable(this.props, nextProps);
 	}
 
 	render () {
 		const {actions, cells, size} = this.props;
 
-		const reactCells = cells.map(
-			(cell) => {
-				return (
-						<Cell
-							key={cell.get('x') + "_" + cell.get('y')} cell={cell} size={size}
-							onCellClick = { (cell) => { actions.toggleCell(cell) } }
-						/>
-				)
-			}
-		);
+		//const reactCells = [];
+
+		const reactCells = cells.map( (cell) => {
+			return (
+				<Cell
+					key={cell.get('x') + "_" + cell.get('y')} cell={cell} size={size}
+					onCellClick = { (cell) => { actions.toggleCell(cell) } }
+				/>
+			)
+		});
 
 		return (
 			<div className={cx('cells-container')}>
