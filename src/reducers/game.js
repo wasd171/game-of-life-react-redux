@@ -1,5 +1,5 @@
 import types from '../constants/GameConstants'
-import {OrderedMap, Map} from 'immutable'
+import Immutable, {OrderedMap, Map} from 'immutable'
 
 
 
