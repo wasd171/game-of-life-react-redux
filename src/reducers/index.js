@@ -63,6 +63,7 @@ export default reduceReducers(
 						});
 
 					return state.set('cells', cells.merge(updatedCells) );
+
 					//return state.withMutations( (res) => {
 					//	updatedCells.forEach( (cell) => {
 					//		const x = cell.get('x');

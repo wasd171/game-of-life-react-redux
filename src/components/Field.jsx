@@ -15,11 +15,11 @@ class Field extends React.Component {
 	render () {
 		const {actions, cells, size} = this.props;
 
-		const reactCells = cells.map( (cell) => {
+		const reactCells = cells.toArray().map( (cell) => {
 			return (
 				<Cell
-					key={cell.get('x') + "_" + cell.get('y')} cell={cell} size={size}
-					onCellClick = { (cell) => { actions.toggleCell(cell) } }
+					key={cell.get('x') + "_" + cell.get('y')} alive={cell.get('alive')} size={size}
+					onCellClick = { () => { actions.toggleCell(cell) } }
 				/>
 			)
 		});

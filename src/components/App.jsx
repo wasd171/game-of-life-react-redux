@@ -39,7 +39,7 @@ function mapStateToProps(state) {
 	return {
 		intervals: state.get('intervals').toJS(),
 		interval: state.get('interval'),
-		cells: state.get('cells').toArray(),
+		cells: state.get('cells'),
 		size: state.get('size'),
 		sizes: state.get('sizes').toJS(),
 		gameRunning: state.get('gameRunning'),
